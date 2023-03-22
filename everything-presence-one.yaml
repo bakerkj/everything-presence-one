@@ -48,7 +48,7 @@ dashboard_import:
 
 light:
   - platform: status_led
-    name: "ESP32 Status LED"
+    name: "${friendly_name} ESP32 Status LED"
     pin: GPIO32
     entity_category: config
 
