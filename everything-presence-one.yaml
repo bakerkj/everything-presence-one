@@ -298,28 +298,14 @@ number:
       - switch.turn_on: mmwave_sensor
 
 button:
-  - platform: restart
-    name: Restart_internal
-    id: restart_internal
-    entity_category: config 
-    internal: true
   - platform: template
-    name: "Restart mmWave Sensor"
+    name: "${friendly_name} Restart mmWave Sensor"
     id: "restart_mmwave"
     entity_category: config
     internal: true
     on_press:
       - uart.write: "resetSystem"
-  - platform: template
-    name: Restart $name
-    entity_category: config
-    on_press:
-      - button.press: restart_mmwave
-      - button.press: restart_internal
-  - platform: safe_mode
-    internal: false
-    name: $name Safe Mode
-    entity_category: config
+
   - platform: template
     name: "Factory Reset mmWave"
     id: "factory_reset_mmwave"
