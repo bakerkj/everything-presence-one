@@ -1,6 +1,5 @@
 substitutions:
   name: "everything-presence-one"
-  room: ""
   friendly_name: "Everything Presence One"
   project_name: "Everything Smart Technology.Everything Presence One"
   project_version: "1.1.7"
@@ -86,13 +85,13 @@ sensor:
   - platform: shtcx
     id: "shtc3_sensor"
     temperature:
-      name: "${room} Temperature"
+      name: "Temperature"
       id: temperature_sensor
       filters:
         - offset: ${temperature_offset}
         - lambda: "return x + id(temperature_offset_ui).state;"
     humidity:
-      name: "${room} Humidity"
+      name: "Humidity"
       id: humidity_sensor
       filters:
         - offset: ${humidity_offset}
@@ -100,7 +99,7 @@ sensor:
     address: 0x70
     update_interval: ${temperature_update_interval}
   - platform: bh1750
-    name: "${room} Illuminance"
+    name: "Illuminance"
     id: illuminance_sensor
     address: 0x23
     update_interval: ${illuminance_update_interval}
@@ -109,7 +108,7 @@ sensor:
 
 binary_sensor:
   - platform: gpio
-    name: ${room} mmWave
+    name: mmWave
     id: mmwave
     device_class: occupancy
     pin:
@@ -121,13 +120,13 @@ binary_sensor:
     pin:
       number: 33
       mode: INPUT_PULLDOWN
-    name: ${room} PIR
+    name: PIR
     id: pir_motion_sensor
     device_class: motion
     filters:
       - delayed_off:  !lambda 'return id(pir_off_latency).state * 1000.0;'
   - platform: template
-    name: ${room} Occupancy
+    name: Occupancy
     id: occupancy
     device_class: occupancy
     filters:
