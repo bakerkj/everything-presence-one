@@ -22,7 +22,7 @@ esphome:
   on_boot:
     priority: 600
     then:
-      - light.turn_off: mmwave_led_output
+      - output.turn_off: mmwave_led_output
       - uart.write: "sensorStart"
       
 esp32:
