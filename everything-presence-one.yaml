@@ -61,7 +61,7 @@ light:
     disabled_by_default: False
   - platform: binary
     name: "${friendly_name} mmWave LED"
-    restore_mode: RESTORE_DEFAULT_OFF
+    restore_mode: DEFAULT_OFF
     output: mmwave_led_output
     entity_category: config
     disabled_by_default: False
