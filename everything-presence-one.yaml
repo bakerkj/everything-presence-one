@@ -173,6 +173,8 @@ binary_sensor:
     device_class: motion
     filters:
       - delayed_off:  !lambda 'return id(pir_off_latency).state * 1000.0;'
+      - delayed_on:  !lambda 'return id(pir_on_latency).state * 1000.0;'
+
   - platform: template
     name: "${room} Occupancy"
     id: occupancy
@@ -389,6 +391,20 @@ number:
     unit_of_measurement: seconds
     mode: slider
 
+  - platform: template
+    name: "${friendly_name} PIR on latency"
+    icon: mdi:clock-start
+    id: pir_on_latency
+    entity_category: config
+    min_value: 0
+    max_value: 2
+    initial_value: 0
+    optimistic: true
+    step: 0.1
+    restore_value: true
+    unit_of_measurement: seconds
+    mode: slider        
+    
   - platform: template
     name: "${friendly_name} Temperature Offset"
     id: temperature_offset_ui
