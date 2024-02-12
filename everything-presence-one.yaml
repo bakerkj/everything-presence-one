@@ -20,9 +20,8 @@ esphome:
     name: ${project_name}
     version: ${project_version}
   on_boot:
-    priority: 600
+    priority: -100
     then:
-      - output.turn_off: mmwave_led_output
       - uart.write: "sensorStart"
       
 esp32:
@@ -212,7 +211,7 @@ switch:
     disabled_by_default: True
     entity_category: config
     optimistic: true
-    restore_mode: RESTORE_DEFAULT_ON
+    restore_mode: DISABLED
     turn_on_action:
       - uart.write: "sensorStart"
       - delay: 1s
